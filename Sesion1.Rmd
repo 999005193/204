@@ -1,0 +1,193 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+Aritmetica en R
+
+```{r}
+3+5
+10+6
+
+5-4
+
+5*9
+(5-9)/9
+2 %% 10
+
+
+
+```
+
+```{r}
+x = 10
+x
+
+y<-5
+y
+
+
+```
+Variables
+
+```{r}
+numeric_vector <- c(10,2,5)
+numeric_vector
+
+char_vector <- c("A","B")
+char_2 <- c("C","D","E")
+char_vector
+```
+
+Vectores Nombrando
+
+```{r}
+poker_vector <- c(-10, 5, -100, 50)
+roulette_vector <- c(45, 100, -5, -2)
+
+names(poker_vector) <- c("Lunes","Martes","Mier","Jue")
+names(roulette_vector) <- c("Lunes","Martes","Mier","Jue")
+poker_vector
+roulette_vector
+```
+Comparaciones Operadores Logicos
+
+```{r}
+age <- 17
+age >= 18
+
+Result <- age >= 20
+Result
+
+total_poker <- sum(poker_vector)
+total_poker
+
+total_roulette <- sum(roulette_vector)
+
+SumaT <- total_poker + total_roulette
+SumaT
+
+Total_Daily <- poker_vector + roulette_vector
+Total_Daily
+
+SumaT2 <- sum(total_poker, total_roulette)
+SumaT2
+
+poker_vector
+poker_vector[1]
+poker_vector[c(2,3)]
+poker_vector[c(3,2,1)]
+
+roulette_vector[2:4]
+poker_s <- poker_vector[c("Martes","Mier")]
+mean(poker_s)
+
+selection_vector <- poker_vector > 0
+selection_vector
+
+poker_vector[selection_vector]
+```
+MATRICES
+```{r}
+matrix(1:9,byrow=TRUE,nrow = 3)
+```
+```{r}
+new_hope <- c(460.998, 314.4)
+empire_strike <- c(2980.475, 247.900)
+return_jedi <- c(309.306, 165.8)
+
+box_office <- c(new_hope, empire_strike, return_jedi)
+box_office
+
+star_wars_matrix <- matrix(box_office, byrow = TRUE, nrow = 3)
+star_wars_matrix
+
+region <- c("US", "non-US")
+titles <- c("A new Hope", "The Empire Striles Back", "Return of the Jedi")
+
+colnames(star_wars_matrix) <- region
+rownames(star_wars_matrix) <- titles
+```
+RowSums (Sumariza por fila)
+cbind (Agrega una nueva columna a la estructura (matrix))
+```{r}
+worldwide_vector <- rowSums(star_wars_matrix)
+worldwide_vector
+
+all_wars_variable <- cbind(star_wars_matrix, worldwide_vector)
+all_wars_variable
+
+worldwide_cols <- colSums(star_wars_matrix)
+worldwide_cols
+
+all_wars_variable <- rbind(all_wars_variable, worldwide_cols)
+all_wars_variable
+```
+Selección de elementos en Matrices
+Primer argumento - Filas; Segundo argumento - Col
+Indice inicia en 1 no en 0
+```{r}
+non_us_all <- all_wars_variable[,2]
+non_us_all
+
+non_us_all2 <- all_wars_variable[1:3,2]
+non_us_all2
+mean(non_us_all2)
+```
+Aritmetica con Matrices
+```{r}
+us_all <- all_wars_variable[1:3,1]
+us_all <- us_all * 0.12
+us_all
+```
+Factores
+Usado para variable categorica exclusivamente
+```{r}
+sex_vector <- c("Male","Female","Female","Male","Male")
+factor_sex_vector <- factor(sex_vector)
+factor_sex_vector
+
+temp_vector <- c("High", "Low", "High", "Low", "Medium")
+factor_temp_vector <- factor(temp_vector, order=TRUE, levels = c("Low","Medium","High"))
+factor_temp_vector
+
+```
+Factor Levels
+```{r}
+survey_vector <- c("M","F","F","M","M")
+factor_survey_vector <- factor(survey_vector)
+
+factor_survey_vector
+
+levels(factor_survey_vector) <- c("Female","Male")
+```
+Summarizing a Factor
+Categoria nominal - no la podemos medir (no podemos comparar)
+Categoria ordinal 
+```{r}
+summary(survey_vector)
+summary(factor_survey_vector)
+
+male <- factor_survey_vector[1]
+male
+
+female <- factor_survey_vector[2]
+female
+
+male > female
+
+speed_vector <- c("medium", "slow", "medium", "fast")
+factor_speed_vector <- factor(speed_vector, ordered = TRUE, levels = c("slow","medium","fast"))
+factor_speed_vector
+
+da2 <- factor_speed_vector[2]
+da3 <- factor_speed_vector[1]
+
+da2
+da3
+
+da2 = da3
+da2 > da3
+```
+
+
