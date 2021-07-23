@@ -1,0 +1,39 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+```{r}
+sets <- read_csv('sets.csv')
+themes <- read_csv('themes.csv')
+parts <- read_csv('parts.csv')
+part_categories <- read_csv('part_categories.csv')
+
+```
+```{r}
+counties %>%
+  dplyr::select(state, county, population, professional:production)
+
+counties %>%
+  dplyr::select(state, county, population, ends_with("work"), starts_with("income"))
+
+```
+The rename verb
+```{r}
+counties %>%
+  count(state) %>%
+  rename(num_counties = n)
+
+counties %>%
+  dplyr::select(state, county, poverty_rate = poverty)
+```
+Using transmute
+#Solamente mantiene las col que nosotros queremos
+```{r}
+counties %>%
+  transmute(state, county, population, density = population/land_area) %>%
+  filter(population > 1000000) %>%
+  arrange(density)
+```
+
+
